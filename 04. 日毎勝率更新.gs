@@ -1,11 +1,7 @@
 function updateDailyWinRate() {
-  
-  var book = SpreadsheetApp.getActive();
-  var sheet = book.getSheetByName("総合")
   var startRow = 2;
   var startCol = 30;
-  var startCell = sheet.getRange(startRow, startCol);
-  var memberNum = 7
+  var startCell = samarySheet.getRange(startRow, startCol);
   var height = memberNum;
   var width = memberNum;
   var sliceFormula = "SPARKLINE({1,0})" //斜線
@@ -13,7 +9,6 @@ function updateDailyWinRate() {
   var winRateFormulaArray = [];
   
   //array作成
-  
   for(var i = 0; i < memberNum; i++){
     winLoseArray.push([]);
     winRateFormulaArray.push([]);
@@ -27,7 +22,7 @@ function updateDailyWinRate() {
   //実績取得
   var resultStartRow = 5;
   var resultStartCol = 3; 
-  var resultData = sheet.getRange(resultStartRow, resultStartCol, sheet.getLastRow(), memberNum).getValues();
+  var resultData = samarySheet.getRange(resultStartRow, resultStartCol, samarySheet.getLastRow(), memberNum).getValues();
   
   //勝利数入力
   for(var i = 0; true; i++){
@@ -78,10 +73,7 @@ function updateDailyWinRate() {
   
   
   //勝率入力
-  sheet.getRange(startRow, startCol, height, width).setFormulas(winRateFormulaArray);
+  samarySheet.getRange(startRow, startCol, height, width).setFormulas(winRateFormulaArray);
   
   
-//  Logger.log(resultData);
-//  Logger.log(winLoseArray);
-//  Logger.log(winRateFormulaArray);
 }

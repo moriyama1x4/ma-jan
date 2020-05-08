@@ -1,8 +1,6 @@
 function copySheet(dates) {
-  var book = SpreadsheetApp.getActive();
   var mastersSheet = book.getSheetByName("Master");
-  var totalSheet = book.getSheetByName("総合")
-  
+
   //シート複製
   dates.forEach(function(value, index){
     if(!book.getSheetByName(value)){//ない時のみ複製
@@ -12,7 +10,7 @@ function copySheet(dates) {
     
     //順番
     SpreadsheetApp.setActiveSheet(copySheet);
-    SpreadsheetApp.getActive().moveActiveSheet(totalSheet.getIndex() + 1);
+    SpreadsheetApp.getActive().moveActiveSheet(samarySheet.getIndex() + 1);
     
     }
   });
@@ -20,6 +18,6 @@ function copySheet(dates) {
   //参照がバグるので、こぴって直す
   var targetCol = 3;
   
-  var targetRange = totalSheet.getRange(1, targetCol, totalSheet.getLastRow(), 1);
+  var targetRange = samarySheet.getRange(1, targetCol, samarySheet.getLastRow(), 1);
   targetRange.copyTo(targetRange);
 }

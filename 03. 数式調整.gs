@@ -1,10 +1,7 @@
 function arranegFormula(dates) {
-  
-  var book = SpreadsheetApp.getActive();
-  var sheet = book.getSheetByName("総合")
   var startRow = 5;
   var startCol = 12;
-  var startCell = sheet.getRange(startRow, startCol);
+  var startCell = samarySheet.getRange(startRow, startCol);
   var height = 4;
   var width = 7;
   var formulaKeyCell = "T3"
@@ -17,8 +14,5 @@ function arranegFormula(dates) {
   
   //数式セット
   startCell.setFormula(newFormula);
-  startCell.copyTo(sheet.getRange(startRow, startCol, height, width));
-  
-//  var originFormula = sheet.getRange(startRow, startCol).getFormula();
-//  Logger.log(originFormula);
+  startCell.copyTo(samarySheet.getRange(startRow, startCol, height, width)); 
 }

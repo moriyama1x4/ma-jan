@@ -1,11 +1,7 @@
 function updateGameWinRate() {
-  
-  var book = SpreadsheetApp.getActive();
-  var samarySheet = book.getSheetByName("総合")
   var startRow = 11;
   var startCol = 30;
   var startCell = samarySheet.getRange(startRow, startCol);
-  var memberNum = 7
   var height = memberNum;
   var width = memberNum;
   var sliceFormula = "SPARKLINE({1,0})" //斜線
@@ -13,7 +9,6 @@ function updateGameWinRate() {
   var winRateFormulaArray = [];
   
   //array作成
-  
   for(var i = 0; i < memberNum; i++){
     winLoseArray.push([]);
     winRateFormulaArray.push([]);
@@ -101,8 +96,4 @@ function updateGameWinRate() {
   //勝率入力
   samarySheet.getRange(startRow, startCol, height, width).setFormulas(winRateFormulaArray);
   
-  
-//  Logger.log(resultData);
-//  Logger.log(winLoseArray);
-//  Logger.log(winRateFormulaArray);
 }
