@@ -41,7 +41,7 @@ function updateGameWinRate() {
     for(var i = 0; true; i++){
       var endFlag = true
       for(var j = 0; j < memberNum; j++){
-        if(resultData[i][j]){
+        if(!(resultData[i][j] === "" || resultData[i][j] === "-")){
           endFlag = false;
         }
       }
@@ -51,13 +51,13 @@ function updateGameWinRate() {
       }
       
       for(var j = 0; j < memberNum; j++){
-        if(resultData[i][j] === ""){
+        if(resultData[i][j] === "" || resultData[i][j] === "-"){
           continue;
         }
         var selfScore = resultData[i][j];
         
         for(var k = j + 1; k < memberNum; k++){
-          if(resultData[i][k] === ""){
+          if(resultData[i][k] === "" || resultData[i][k] === "-"){
             continue;
           }
           var taegetScore = resultData[i][k];
