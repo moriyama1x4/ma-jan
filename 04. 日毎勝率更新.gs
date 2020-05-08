@@ -1,9 +1,9 @@
-function inputWinRate() {
+function updateDailyWinRate() {
   
   var book = SpreadsheetApp.getActive();
   var sheet = book.getSheetByName("総合")
-  var startRow = 11;
-  var startCol = 12;
+  var startRow = 2;
+  var startCol = 30;
   var startCell = sheet.getRange(startRow, startCol);
   var memberNum = 7
   var height = memberNum;
@@ -25,7 +25,7 @@ function inputWinRate() {
  
   
   //実績取得
-  var resultStartRow = 4;
+  var resultStartRow = 5;
   var resultStartCol = 3; 
   var resultData = sheet.getRange(resultStartRow, resultStartCol, sheet.getLastRow(), memberNum).getValues();
   

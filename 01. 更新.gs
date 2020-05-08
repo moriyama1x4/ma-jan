@@ -1,9 +1,9 @@
-function newGame() {
+function update() {
   var book = SpreadsheetApp.getActive();
   var sheet = book.getSheetByName("総合")
   var dates = [];
   var datesCol = 1;
-  var startDatesRow = 4;
+  var startDatesRow = 5;
   
   //全日付取得
   for(var i = startDatesRow; i <= sheet.getLastRow(); i++){
@@ -17,6 +17,6 @@ function newGame() {
 
   copySheet(dates);
   arranegFormula(dates);
-  
-
+  updateDailyWinRate();
+  updateGameWinRate();
 }

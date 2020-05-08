@@ -2,7 +2,7 @@ function arranegFormula(dates) {
   
   var book = SpreadsheetApp.getActive();
   var sheet = book.getSheetByName("総合")
-  var startRow = 4;
+  var startRow = 5;
   var startCol = 12;
   var startCell = sheet.getRange(startRow, startCol);
   var height = 4;
