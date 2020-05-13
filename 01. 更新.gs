@@ -2,9 +2,9 @@ function update() {
   var dates = [];
   var datesCol = 1;
   var startDatesRow = 5;
-  var dateRow = 20;
-  var dateCol = 19;
-  var dateCell = samarySheet.getRange(dateRow, dateCol);//更新日時
+  var dateRow = 18;
+  var dateCol = 29;
+  var dateCell = samarySheet.getRange(dateRow, dateCol);
   
   //全日付取得
   for(var i = startDatesRow; i <= samarySheet.getLastRow(); i++){

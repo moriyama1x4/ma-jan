@@ -1,6 +1,6 @@
 function updateDailyWinRate() {
-  var startRow = 13;
-  var startCol = 38;
+  var startRow = 2;
+  var startCol = 30;
   var startCell = samarySheet.getRange(startRow, startCol);
   var height = memberNum;
   var width = memberNum;

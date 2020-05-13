@@ -1,6 +1,6 @@
 function updateGameWinRate() {
-  var startRow = 13;
-  var startCol = 20;
+  var startRow = 11;
+  var startCol = 30;
   var startCell = samarySheet.getRange(startRow, startCol);
   var height = memberNum;
   var width = memberNum;

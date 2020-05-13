@@ -1,6 +1,6 @@
 function arranegFormula(dates) {
   var startRow = 5;
-  var startCol = 20;
+  var startCol = 12;
   var startCell = samarySheet.getRange(startRow, startCol);
   var height = 4;
   var width = 7;
