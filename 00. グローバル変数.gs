@@ -26,7 +26,6 @@ for(var i = startSeasonsRow; i <= samarySheet.getLastRow(); i++){
   if(!season){
     break;
   }
-  
   //被ってたらskip
   var skipFlag = false;
   for(var j = 0; j <= seasons.length; j++){
@@ -34,11 +33,9 @@ for(var i = startSeasonsRow; i <= samarySheet.getLastRow(); i++){
       skipFlag = true;
     }
   }
-  
   if(skipFlag){
     continue;
   }
-  
   seasons.push(samarySheet.getRange(i, seasonsCol).getValue());
 }
 
