@@ -128,9 +128,15 @@ function updateGameWinRate() {
   
   //実績取得
   var sheets = book.getSheets();
-  var excludeNames = ["Master", "総合", "4月", "5月"];
+  var excludeNames = ["Master", "総合"];
+  
+  //除外シートにシーズン追加
+  for(var i = 0; i < seasons.length; i++){
+    excludeNames.push(seasons[i]);
+  }
+  
+  //除外シートを除外
   for(var i = 0; i < excludeNames.length; i++){
-    
     for(var j = 0; j < sheets.length; j++){
       if(sheets[j].getSheetName() == excludeNames[i]){
         sheets.splice(j, 1);
