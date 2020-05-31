@@ -6,8 +6,13 @@ function onOpen() {
     },
     {
       name : "勝率更新",
-      functionName : "undateWinRate"
+      functionName : "updateWinRate"
     }
+//    ,
+//    {
+//      name : "レート出力",
+//      functionName : "outputNetRate"
+//    }
   ];
   book.addMenu("スクリプト実行", entries);
 };

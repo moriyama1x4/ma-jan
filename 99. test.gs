@@ -1,4 +1,5 @@
 function test() {
-  var excludeNames = ["Master", "総合"] + seasons;
-  Logger.log(excludeNames);
-};
+  var activeSheet = book.getActiveSheet()
+  
+  Logger.log(activeSheet.getName());
+}

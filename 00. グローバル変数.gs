@@ -1,6 +1,7 @@
 var book = SpreadsheetApp.getActive();
 var samarySheet = book.getSheetByName("総合")
 var mastersSheet = book.getSheetByName("Master");
+var activeSheet = book.getActiveSheet();
 var memberNum = 7;
 
 //全日付
@@ -39,3 +40,12 @@ for(var i = startSeasonsRow; i <= samarySheet.getLastRow(); i++){
   seasons.push(samarySheet.getRange(i, seasonsCol).getValue());
 }
 
+//現在日時取得
+var now = new Date();
+var year = now.getFullYear();
+var month = now.getMonth()+1;
+var date = now.getDate();
+var hour = now.getHours();
+var min = now.getMinutes();
+var sec = now.getSeconds();
+var updateTime = "最終更新日時 : " + year + "/" + month + "/" + date + " " + hour + ":" + min + ":" + sec;

@@ -28,24 +28,60 @@ function copySheet(dates) {
   targetRange.copyTo(targetRange);
 }
 
+
+
 /******
 順位数式複製
 *******/
-function arranegFormula(dates) {
-  var startRow = 5;
-  var startCol = 21;
-  var startCell = samarySheet.getRange(startRow, startCol);
+function arranegFormula() {
   var height = 4;
   var width = 7;
-  var formulaKeyCell = "T3"
-  var newFormula = "'" + dates[0] + "'!" + formulaKeyCell;
+  var samaryStartTargetRow = 5;
+  var samaryStartTargetCol = 21;
+  var samaryTargetCell = samarySheet.getRange(samaryStartTargetRow, samaryStartTargetCol);
+  var samaryTargetRange = samarySheet.getRange(samaryStartTargetRow, samaryStartTargetCol, height, width);
+  var samaryFormulaKeyCell = "T5"
   
-  //数式生成
-  for(var i = 1; i < dates.length; i++){
-    newFormula += ("+'" + dates[i] + "'!" + formulaKeyCell);
+  
+  for(var h = 0; h < seasons.length; h++){
+    var seasonSheet = book.getSheetByName(seasons[h]); 
+    var seasonStartTargetRow = samaryStartTargetRow;
+    var seasonStartTargetCol = 20;
+    var seasonTargetCell = seasonSheet.getRange(seasonStartTargetRow, seasonStartTargetCol);
+    var seasonTargetRange = seasonSheet.getRange(seasonStartTargetRow, seasonStartTargetCol, height, width);
+    
+    //シーズン対象日付取得
+    var seasonDates = [];
+    var seasonStartDatesRow = 5;
+    var seasonDatesCol = 1;
+    for(var i = seasonStartDatesRow; i <= seasonSheet.getLastRow(); i++){
+      var date = seasonSheet.getRange(i, seasonDatesCol).getValue();
+      if(!date){
+        break;
+      }
+      seasonDates.push(seasonSheet.getRange(i, seasonDatesCol).getValue());
+    }
+    
+    //シーズン数式生成
+    var seasonFormulaKeyCell = "T3"
+    var seasonFormula = "'" + seasonDates[0] + "'!" + seasonFormulaKeyCell;
+    for(var i = 1; i < seasonDates.length; i++){
+      seasonFormula += ("+'" + seasonDates[i] + "'!" + seasonFormulaKeyCell);
+    }
+    
+    //シーズン数式セット
+    seasonTargetCell.setFormula(seasonFormula);
+    seasonTargetCell.copyTo(seasonTargetRange); 
   }
   
-  //数式セット
-  startCell.setFormula(newFormula);
-  startCell.copyTo(samarySheet.getRange(startRow, startCol, height, width)); 
+  //総合数式生成
+  var samaryFormulaKeyCell = "T5"
+  var samaryFormula = "'" + seasons[0] + "'!" + samaryFormulaKeyCell;
+  for(var i = 1; i < seasons.length; i++){
+    samaryFormula += ("+'" + seasons[i] + "'!" + samaryFormulaKeyCell);
+  }
+  
+  //総合数式セット
+  samaryTargetCell.setFormula(samaryFormula);
+  samaryTargetCell.copyTo(samaryTargetRange); 
 }
